@@ -18,11 +18,14 @@ Project name: MyGradleApp
 Source package: com.mycompany.mygradleapp (or any package name you prefer)
 
 # Step 2: Configure the build.gradle File
+### dependencies site 
+I can coppy any *dependencies* on this site `https://mvnrepository.com/`
+
 After initializing the project, your build.gradle file should look something like this:
 ```java
 plugins {
-    id 'application'
     id 'java'
+    id 'application'
 }
 
 repositories {
@@ -35,7 +38,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'com.mycompany.mygradleapp.App'
+    mainClassName = 'App'
 }
 ```
 # Step 3: Create the Main Application File
@@ -47,11 +50,13 @@ nano src/main/java/com/mycompany/mygradleapp/App.java
 ```
 Add the following code to App.java:
 ```java
-package com.mycompany.mygradleapp;
-
 public class App {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
+    }
+
+    public String getGreeting() {
+        return "Hello, World!";
     }
 }
 ```
@@ -64,8 +69,6 @@ nano src/test/java/com/mycompany/mygradleapp/AppTest.java
 ```
 ## Add the following code to AppTest.java:
 
-
-package com.mycompany.mygradleapp;
 ```java
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -75,21 +78,6 @@ public class AppTest {
     public void testAppHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-    }
-}
-Modify your App class to include a getGreeting method:
-
-java
-Copy code
-package com.mycompany.mygradleapp;
-
-public class App {
-    public String getGreeting() {
-        return "Hello, World!";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
     }
 }
 ```
